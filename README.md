@@ -1,1 +1,3 @@
 <!-- Readme -->
+
+npm run dev
