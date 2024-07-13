@@ -31,11 +31,20 @@ const swaggerOptions = {
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
-var corsOptions = {
-  origin: "http://localhost:4200"
+// Configurar CORS para permitir solicitudes desde http://localhost:4200
+const corsOptions = {
+  origin: 'http://localhost:4200', // Permitir solo este origen
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Métodos permitidos
+  allowedHeaders: ['Content-Type', 'Authorization'] // Encabezados permitidos
 };
 
 app.use(cors(corsOptions));
+
+// Tu middleware y rutas
+app.use(express.json());
+
+// Manejar solicitudes preflight
+app.options('*', cors(corsOptions));
 
 // Configuración de rutas
 app.use('/', indexRoutes);
