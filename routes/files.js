@@ -1,54 +1,13 @@
 const express = require('express');
 const router = express.Router();
+const uploadFile = require("../middleware/upload");
 
 /**
  * @swagger
- * /users:
- *   get:
- *     summary: Retrieve a list of users
- *     description: Retrieve a list of users
- *     responses:
- *       200:
- *         description: A successful response
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 type: object
- *                 properties:
- *                   id:
- *                     type: integer
- *                   name:
- *                     type: string
+ * /files:
  *   post:
- *     summary: Create a new user
- *     description: Create a new user
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               name:
- *                 type: string
- *             required:
- *               - name
- *     responses:
- *       201:
- *         description: User created successfully
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 id:
- *                   type: integer
- *                 name:
- *                   type: string
- *       400:
- *         description: Invalid input
+ *     summary: Create a new file
+ *     description: Create a new file
  */
 
 router.post('/upload', async(req, res) => {

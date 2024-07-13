@@ -4,6 +4,9 @@ FROM node:14
 # Establece el directorio de trabajo en el contenedor
 WORKDIR /app
 
+# Crea una carpeta dentro de la imagen
+RUN mkdir -p /app/resources/static/assets/uploads
+
 # Copia los archivos package.json y package-lock.json al contenedor
 COPY package*.json ./
 
