@@ -3,6 +3,7 @@ global.__basedir = __dirname;
 
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJsdoc = require('swagger-jsdoc');
 const indexRoutes = require('./routes/index');
@@ -29,6 +30,12 @@ const swaggerOptions = {
 
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
+var corsOptions = {
+  origin: "http://localhost:4200"
+};
+
+app.use(cors(corsOptions));
 
 // Configuración de rutas
 app.use('/', indexRoutes);
