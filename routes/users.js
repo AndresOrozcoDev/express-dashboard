@@ -10,7 +10,7 @@ let users = [
  * @swagger
  * /users:
  *   get:
- *     summary: Retrieve a list of users
+ *     summary: Get users list
  *     description: Retrieve a list of users
  *     responses:
  *       200:
@@ -18,59 +18,63 @@ let users = [
  *         content:
  *           application/json:
  *             schema:
- *               type: array
- *               items:
- *                 type: object
- *                 properties:
- *                   id:
- *                     type: integer
- *                   name:
- *                     type: string
- *   post:
- *     summary: Create a new user
- *     description: Create a new user
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               name:
- *                 type: string
- *             required:
- *               - name
- *     responses:
- *       201:
- *         description: User created successfully
+ *               type: object
+ *               properties:
+ *                 status_code:
+ *                   type: integer
+ *                   example: 200
+ *                 message:
+ *                   type: string
+ *                   example: "Users list"
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       id:
+ *                         type: integer
+ *                         example: 1
+ *                       name:
+ *                         type: string
+ *                         example: "John Doe"
+ *       500:
+ *         description: Internal server error
  *         content:
  *           application/json:
  *             schema:
  *               type: object
  *               properties:
- *                 id:
+ *                 status_code:
  *                   type: integer
- *                 name:
+ *                   example: 500
+ *                 message:
  *                   type: string
- *       400:
- *         description: Invalid input
+ *                   example: "Internal server error"
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     type: object
  */
 
+
 router.get('/users', (req, res) => {
-  res.json(users);
+  try {
+    // Lógica de la ruta
+    const response = {
+      status_code: 200,
+      message: "Users list",
+      data: users
+    };
+    res.status(200).json(response);
+  } catch (error) {
+    const response = {
+      status_code: 500,
+      message: "Internal server error",
+      data: []
+    };
+    res.status(500).json(response);
+  }
 });
 
-router.post('/users', (req, res) => {
-  const { name } = req.body;
-  if (!name) {
-    return res.status(400).json({ error: 'Name is required' });
-  }
-  const newUser = {
-    id: users.length + 1,
-    name,
-  };
-  users.push(newUser);
-  res.status(201).json(newUser);
-});
 
 module.exports = router;
