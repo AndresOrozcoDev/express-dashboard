@@ -2,12 +2,14 @@ const express = require('express');
 const router = express.Router();
 const uploadFile = require("../middleware/upload");
 
+
 /**
  * @swagger
  * /files:
  *   post:
  *     summary: Create a new file
  *     description: Create a new file
+ *     tags: [files]
  */
 
 router.post('/upload', async(req, res) => {

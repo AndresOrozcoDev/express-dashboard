@@ -26,7 +26,8 @@ const loadCountries = () => {
  * /countries:
  *   get:
  *     summary: Get countries list
- *     description: Retrieve a paginated list of countries.
+ *     description: Retrieve a paginated list of countries
+ *     tags: [countries]
  *     parameters:
  *       - name: page
  *         in: query
