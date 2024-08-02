@@ -9,6 +9,7 @@ const swaggerJsdoc = require('swagger-jsdoc');
 const indexRoutes = require('./routes/index');
 const userRoutes = require('./routes/users');
 const filesRoutes = require('./routes/files');
+const countriesRoutes = require('./routes/countries');
 
 // Configuración de Swagger
 const swaggerOptions = {
@@ -33,7 +34,7 @@ app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 // Configurar CORS para permitir solicitudes desde http://localhost:4200
 const corsOptions = {
-  origin: 'http://localhost:4200', // Permitir solo este origen
+  origin: ['http://localhost:4200', 'http://localhost:3000'], // Permitir solo este origen
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Métodos permitidos
   allowedHeaders: ['Content-Type', 'Authorization'] // Encabezados permitidos
 };
@@ -50,6 +51,7 @@ app.options('*', cors(corsOptions));
 app.use('/', indexRoutes);
 app.use('/', userRoutes);
 app.use('/', filesRoutes);
+app.use('/', countriesRoutes);
 
 const PORT = process.env.PORT || 80;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
