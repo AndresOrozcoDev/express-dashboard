@@ -22,7 +22,7 @@ app.get('/openapi.json', (req, res) => {
 
 
 const corsOptions = {
-  origin: ['http://localhost:4200', 'http://localhost:3200', 'http://localhost:3000'],
+  origin: ['http://localhost:4200','http://localhost:3000'],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   allowedHeaders: ['Content-Type', 'Authorization']
 };
@@ -38,7 +38,7 @@ app.use('/', filesRoutes);
 app.use('/', countriesRoutes);
 
 
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 3005;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
   console.log(`Swagger docs available at http://localhost:${PORT}/docs`);
