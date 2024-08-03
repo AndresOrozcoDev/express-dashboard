@@ -22,7 +22,7 @@ app.get('/openapi.json', (req, res) => {
 
 
 const corsOptions = {
-  origin: ['http://localhost:4200', 'http://localhost:3000'],
+  origin: ['http://localhost:4200', 'http://localhost:3200'],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   allowedHeaders: ['Content-Type', 'Authorization']
 };
