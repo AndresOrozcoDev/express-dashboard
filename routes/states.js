@@ -141,13 +141,14 @@ const loadStates = () => {
 router.get('/states', async (req, res) => {
     try {
         const municipios = await loadStates();
-        const states = municipios.data.map(item => ({ id: item.state_dane_id, state: item.state }));
+        const states = municipios.data.map(item => ({ id: item.state_dane_code, state: item.state }));
         res.json({
             status_code: 200,
             message: "success",
             data: states
         });
     } catch (error) {
+        console.error("Error loading states:", error);
         res.status(500).json({
             status_code: 500,
             message: 'Error loading states',
@@ -161,7 +162,7 @@ router.get('/cities/:id', async (req, res) => {
     const stateId = req.params.id;
     try {
         const municipios = await loadStates();
-        const cities = municipios.data.filter(item => item.state_dane_id === stateId).map(item => ({ id: item.city_dane_id, city: item.city }));
+        const cities = municipios.data.filter(item => item.state_dane_code === stateId).map(item => ({ id: item.city_dane_code, city: item.city }));
         res.json({
             status_code: 200,
             message: "success",

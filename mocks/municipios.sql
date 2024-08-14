@@ -22,7 +22,7 @@ CREATE TABLE "public"."cities" (
 -- -------------------------------------------------------------
 
 INSERT INTO cities (city, state, city_dane_code, state_dane_code) 
-VALUES ('Abejorral', 'Antioquia', '002', '05'),
+VALUES ('Abejorral', 'Antioquia', '05', '002'),
     ('Abrego', 'Norte de Santander', '54', '003'),
     ('Abriaquí', 'Antioquia', '05', '004'),
     ('Acacías', 'Meta', '50', '006'),
