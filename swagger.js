@@ -14,7 +14,7 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: 'http://localhost:3000',
+        url: 'http://localhost:3005',
         description: 'Local server',
       },
     ],
@@ -31,6 +31,14 @@ const swaggerOptions = {
         name: 'countries',
         description: 'Endpoints for managing countries',
       },
+      {
+        name: 'states',
+        description: 'Endpoints for managing staes',
+      },
+      {
+        name: 'cities',
+        description: 'Endpoints for managing cities',
+      }
     ],
     components: {
       schemas: {

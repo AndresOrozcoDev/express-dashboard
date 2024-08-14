@@ -9,6 +9,7 @@ const swaggerUi = require('swagger-ui-express');
 const indexRoutes = require('./routes/index');
 const filesRoutes = require('./routes/files');
 const countriesRoutes = require('./routes/countries');
+const statesRoutes = require('./routes/states');
 const swaggerDocs = require('./swagger');
 
 
@@ -36,6 +37,7 @@ app.options('*', cors(corsOptions));
 app.use('/', indexRoutes);
 app.use('/', filesRoutes);
 app.use('/', countriesRoutes);
+app.use('/', statesRoutes);
 
 
 const PORT = process.env.PORT || 3005;
